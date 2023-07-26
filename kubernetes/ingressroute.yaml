@@ -12,6 +12,8 @@ spec:
       services:
         - name: webhook
           port: 8084
+      middlewares:
+      - name: passtlsclientcert
   tls:
     certResolver: le
     options: 
