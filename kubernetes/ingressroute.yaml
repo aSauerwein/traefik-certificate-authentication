@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: webhook
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`webhook.pi.sauerwein.se`)
+      priority: 10
+      services:
+        - name: webhook
+          port: 8084
+  tls:
+    certResolver: le
+    options: client-authentication
